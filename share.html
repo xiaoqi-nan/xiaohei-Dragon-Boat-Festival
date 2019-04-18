@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>粽情端午</title>
+    <meta name="viewport" content="width=720, user-scalable=no">
+    <link href="css/public.css" rel="stylesheet" />
+    <style>
+        html, body, .main, .page {
+            width: 100%;
+            height: 100%;
+        }
+
+        .page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        #page_1 {
+            background: url('images/page1Bg.jpg') top center no-repeat;
+            background-size: cover;
+            display: block;
+        }
+
+        .btnExplain {
+            width: 138px;
+            height: 55px;
+            position: absolute;
+            top: 31px;
+            right: 15px;
+            background-image: url('../images/btnExplain.png');
+        }
+
+        .btnStart {
+            width: 295px;
+            height: 89px;
+            background-image: url('../images/startBg.png');
+            text-align: center;
+            line-height: 80px;
+            font-size: 36px;
+            color: #fff;
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            margin-left: -132px;
+            font-weight: bold;
+        }
+
+        #page_2 {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+            #page_2 img {
+                position: absolute;
+                top: 50%;
+                margin-top: -640px;
+            }
+    </style>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?7cd1f90a7c20c35959f8b388dcf8456b";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+</head>
+<body>
+    <div class="main">
+        <div class="page" id="page_1">
+            <div class="btnExplain" onclick="explainFn(1)"></div>
+            <div class="btnStart" onclick="startFn()">开始游戏</div>
+        </div>
+        <div class="page" id="page_2">
+            <img src="images/shareBg.png" />
+        </div>
+    </div>
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/jweixin-1.0.0.js"></script>
+    <script src="js/MMXChina.js"></script>
+    <script src="js/weixinSdk.js"></script>
+    <script src="js/getParam.js"></script>
+    <script src="js/share.js"></script>
+    <script>
+        $('img').click(function (e) {
+            e.preventDefault();
+        })
+    </script>
+
+</body>
+</html>

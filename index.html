@@ -1,0 +1,303 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>粽情端午</title>
+    <meta name="viewport" content="width=720, user-scalable=no">
+    <link href="css/public.css" rel="stylesheet" />
+    <link href="css/swiper.min.css" rel="stylesheet" />
+    <link href="css/index.css?v=1.0.1" rel="stylesheet" />
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?7cd1f90a7c20c35959f8b388dcf8456b";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+</head>
+<body>
+    <div class="loading" id="loading">
+        <img src="images/loading.gif" class="imgLoading" />
+    </div>
+    <div class="main">
+        <div id="music" class="open">
+            <div class="musicImg"></div>
+            <audio src="music/bgMusic.wav" autoplay loop="loop" id="bgMusic"></audio>
+        </div>
+        <!--首页-->
+        <div class="page" id="page_1">
+            <div class="btnExplain" onclick="explainFn(1)"></div>
+            <div class="btnStart" onclick="startFn()">开始游戏</div>
+            <div class="opportunity">您今天还有5次机会</div>
+        </div>
+        <div class="noChance">
+            <div class="noChanceItem">
+                <div class="noChanceIcon"></div>
+                <div class="noChanceInfo">哇哦，您今天的游戏机会已经用完<br>明天再来挑战吧！</div>
+            </div>
+
+        </div>
+        <!--游戏页面-->
+        <div class="page" id="page_2">
+            <div class="top">
+                <div class="topLeft">0</div>
+                <div class="topCenter">
+                    <div class="game_time">
+                        <div class="hold">
+                            <div class="pie pie1"></div>
+                        </div>
+                        <div class="hold">
+                            <div class="pie pie2"></div>
+                        </div>
+                        <div class="bg"> </div>
+                        <div class="time">40</div>
+                    </div>
+                </div>
+                <div class="topRight">1</div>
+            </div>
+            <div class="bottom">
+                <div class="imgItem">
+                    <div class="img" id="img_1">
+                        <img src="images/1.png" />
+                        <div class="errorBg"></div>
+                    </div>
+                    <div class="img" id="img_2">
+                        <img src="images/2.png" />
+                        <div class="errorBg"></div>
+                    </div>
+                    <div class="img" id="img_3">
+                        <img src="images/3.png" />
+                        <div class="errorBg"></div>
+                    </div>
+                    <div class="img" id="img_4">
+                        <img src="images/1.png" />
+                        <div class="errorBg"></div>
+                    </div>
+                    <div class="img" id="img_5">
+                        <img src="images/2.png" />
+                        <div class="errorBg"></div>
+                    </div>
+                    <div class="img" id="img_6">
+                        <img src="images/3.png" />
+                        <div class="errorBg"></div>
+                    </div>
+                    <div class="img" id="img_7">
+                        <img src="images/1.png" />
+                        <div class="errorBg"></div>
+                    </div>
+                    <div class="img" id="img_8">
+                        <img src="images/2.png" />
+                        <div class="errorBg"></div>
+                    </div>
+                    <div class="img" id="img_9">
+                        <img src="images/3.png" />
+                        <div class="errorBg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--玩法说明-->
+        <div class="page" id="page_3">
+            <div class="playBg">
+                <div class="btn learn">学会啦~</div>
+            </div>
+        </div>
+        <!--倒计时-->
+        <div class="page" id="page_4">
+            <div class="p4Item">
+                <div class="p4Number">3</div>
+                <div class="p4Info">游戏即将开始~</div>
+            </div>
+        </div>
+        <!--挑战失败-->
+        <div class="page" id="page_5">
+            <div class="pageBg">
+                <div class="title failTitle"></div>
+                <div class="failScore">50分</div>
+                <div class="optimum">历史最佳成绩：50分</div>
+                <div class="failInfo">要超过60分才能抽奖哦</div>
+                <div class="icon failIcon"></div>
+                <div class="btnItem">
+                    <div class="btn btnAgain" onclick="againFn(5,3)">再玩一次</div>
+                    <div class="btn btnRank" onclick="rankFn(5)">排行榜</div>
+                </div>
+            </div>
+        </div>
+        <!--挑战成功-->
+        <div class="page" id="page_6">
+            <div class="pageBg">
+                <div class="title successTitle"></div>
+                <div class="successScore">50分</div>
+                <div class="optimum">历史最佳成绩：50分</div>
+                <div class="icon successIcon"></div>
+                <div class="btnItem">
+                    <div class="btn btnDraw" onclick="toDrawFn()">去抽奖</div>
+                    <div class="btn btnAgain" onclick="againFn(6,3)">再玩一次</div>
+                    <div class="btn btnRank" onclick="rankFn(6)">排行榜</div>
+                </div>
+            </div>
+        </div>
+        <!--老虎机游戏弹层-->
+        <div class="page" id="page_7">
+            <div class="pageBg1">
+                <div class="title drawTitle"></div>
+                <div class="tigerItem">
+                    <div class="clear">
+                        <div id="machine1" class="slotMachine">
+                            <div class="slot slot1"></div>
+                            <div class="slot slot2"></div>
+                            <div class="slot slot3"></div>
+                            <div class="slot slot4"></div>
+                            <div class="slot slot5"></div>
+                        </div>
+                        <div id="machine2" class="slotMachine">
+                            <div class="slot slot1"></div>
+                            <div class="slot slot2"></div>
+                            <div class="slot slot3"></div>
+                            <div class="slot slot4"></div>
+                            <div class="slot slot5"></div>
+                        </div>
+                        <div id="machine3" class="slotMachine">
+                            <div class="slot slot1"></div>
+                            <div class="slot slot2"></div>
+                            <div class="slot slot3"></div>
+                            <div class="slot slot4"></div>
+                            <div class="slot slot5"></div>
+                        </div>
+                    </div>
+                    <div class="bar" onclick="barFn()"></div>
+                </div>
+                <div class="successItem">
+                    <!--中爱奇艺果-->
+                    <div class="successInfo">价值<span class="blue">299元</span>爱奇艺电视果一台</div>
+                    <div class="btn btnInfo" onclick="infoFn(7)">填写个人信息</div>
+                    <div class="info">正确填写个人信息，才可领取到奖品哦！</div>
+                    <div class="btn btnAgain" onclick="againFn(7,3)">再玩一次</div>
+                    <div class="btn btnRank" onclick="rankFn(7)">排行榜</div>
+                </div>
+                <div class="integralItem">
+                    <!--中积分-->
+                    <div class="successInfo"><span class="blue">100积分</span>已到账，<br>快去积分商城看看吧！</div>
+                    <div class="btn btnIntegral" onclick="goshop()">积分商城</div>
+                    <div class="btn btnAgain" onclick="againFn(7,3)">再玩一次</div>
+                    <div class="btn btnRank" onclick="rankFn(7)">排行榜</div>
+                </div>
+                <div class="failItem">
+                    <!--未中奖-->
+                    <div class="p7Info">三个图片一样才算中奖哦!</div>
+                    <div class="btn btnAgain" onclick="againFn(7,3)">再玩一次</div>
+                    <div class="btn btnRank" onclick="rankFn(7)">排行榜</div>
+                </div>
+            </div>
+        </div>
+        <!--填写信息-->
+        <div class="page" id="page_8">
+            <div class="pageBg1">
+                <div class="title infoTitle"></div>
+                <div class="fillItem">
+                    <div class="txtItem">
+                        <span>姓名</span>
+                        <input type="text" class="txtInput" id="name" />
+                    </div>
+                    <div class="txtItem">
+                        <span>联系方式</span>
+                        <input type="text" class="txtInput" id="phone" maxlength="11" />
+                    </div>
+                    <div class="txtItem">
+                        <span>地址</span>
+                        <input type="text" class="txtInput" id="address" />
+                    </div>
+                    <div class="error"></div>
+                    <div class="btn btnSubmit">提交</div>
+                    <div class="info">正确填写个人信息，才可领取到奖品哦！</div>
+                    <div class="btn btnAgain" onclick="againFn(8,3)">再玩一次</div>
+                    <div class="btn btnRank" onclick="rankFn(8)">排行榜</div>
+                </div>
+            </div>
+        </div>
+        <!--提交成功-->
+        <div class="page" id="page_9">
+            <div class="pageBg1">
+                <div class="rightIcon"></div>
+                <div class="rightInfo">提交成功</div>
+                <!--<div class="btn btnAgain" onclick="againFn(9,3)">再玩一次</div>
+                <div class="btn btnRank" onclick="rankFn(9)">排行榜</div>-->
+            </div>
+        </div>
+        <!--游戏说明-->
+        <div class="page" id="page_10">
+            <div class="pageBg2 pageBg5">
+                <div class="btnClose" onclick="closeFn(10)"></div>
+                <div class="titleItem">
+                    <div class="titleLeft rank" onclick="rankFn(10)">排行榜</div>
+                    <div class="titleCenter explain">活动说明</div>
+                    <div class="titleRight prize" onclick="prizeFn(10)">我的奖品</div>
+                </div>
+                <div class="explainImg">
+                    <img src="images/expalin3.png" />
+                </div>
+            </div>
+        </div>
+        <!--排行榜-->
+        <div class="page" id="page_11">
+            <div class="pageBg2">
+                <div class="btnClose" onclick="closeFn(11)"></div>
+                <div class="titleItem">
+                    <div class="titleLeft explain" onclick="explainFn(11)">活动说明</div>
+                    <div class="titleCenter rank">排行榜</div>
+                    <div class="titleRight prize" onclick="prizeFn(11)">我的奖品</div>
+                </div>
+                <div class="rankItem">
+                    <div class="rankTop">
+                        <div class="rankInfo rank1">排行</div>
+                        <div class="rankInfo rank2">玩家</div>
+                        <div class="rankInfo rank3">成绩</div>
+                    </div>
+                    <div class="rankContent" onscroll="scrollFn(this, 1)">
+                        <div class="rankListItem" id="rank_1">
+
+                        </div>
+                        <div class="dropload-load"><span class="loading"></span>加载中</div>
+                        <div class="noMore">没有更多内容了</div>
+                    </div>
+                    <div class="nomore">暂无</div>
+                </div>
+            </div>
+        </div>
+        <!--我的奖品-->
+        <div class="page" id="page_12">
+            <div class="pageBg2">
+                <div class="btnClose" onclick="closeFn(12)"></div>
+                <div class="titleItem">
+                    <div class="titleLeft explain" onclick="explainFn(12)">活动说明</div>
+                    <div class="titleCenter prize">我的奖品</div>
+                    <div class="titleRight rank" onclick="rankFn(12)">排行榜</div>
+                </div>
+                <div class="prizeContent">
+
+                </div>
+                <div class="nomore">暂无</div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="GameNum" value="5" />
+    <input type="hidden" id="oldScore" value="0" />
+    <input type="hidden" id="strCode" value="" />
+    <input type="hidden" id="PrizeType" value="0" />
+    <input type="hidden" id="drwNum" value="1" />
+    <input class="hiddenInput" type="hidden" value="1" />
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/jweixin-1.0.0.js"></script>
+    <script src="js/MMXChina.js"></script>
+    <script src="js/weixinSdk.js"></script>
+    <script src="js/getParam.js"></script>
+    <script src="js/slotmachine.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/resLoader.js"></script>
+    <script src="js/time.js"></script>
+    <script src="js/index.js?v=1.0.5"></script>
+</body>
+</html>
